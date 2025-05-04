@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block title %}Settings{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <div class="card">
+                <div class="card-header bg-info text-white">
+                    <h3 class="mb-0">User Settings</h3>
+                </div>
+                <div class="card-body">
+                    <form method="POST">
+                        <div class="mb-3">
+                            <label for="theme" class="form-label">Theme</label>
+                            <select class="form-select" id="theme" name="theme">
+                                <option value="light" {% if settings.theme == 'light' %}selected{% endif %}>Light</option>
+                                <option value="dark" {% if settings.theme == 'dark' %}selected{% endif %}>Dark</option>
+                                <option value="blue" {% if settings.theme == 'blue' %}selected{% endif %}>Blue</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="font_size" class="form-label">Font Size</label>
+                            <select class="form-select" id="font_size" name="font_size">
+                                <option value="small" {% if settings.font_size == 'small' %}selected{% endif %}>Small</option>
+                                <option value="medium" {% if settings.font_size == 'medium' %}selected{% endif %}>Medium</option>
+                                <option value="large" {% if settings.font_size == 'large' %}selected{% endif %}>Large</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="notes_per_page" class="form-label">Notes Per Page</label>
+                            <select class="form-select" id="notes_per_page" name="notes_per_page">
+                                <option value="5" {% if settings.notes_per_page == 5 %}selected{% endif %}>5</option>
+                                <option value="10" {% if settings.notes_per_page == 10 %}selected{% endif %}>10</option>
+                                <option value="20" {% if settings.notes_per_page == 20 %}selected{% endif %}>20</option>
+                                <option value="50" {% if settings.notes_per_page == 50 %}selected{% endif %}>50</option>
+                            </select>
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="email_notifications" name="email_notifications" {% if settings.email_notifications %}checked{% endif %}>
+                            <label class="form-check-label" for="email_notifications">Enable Email Notifications</label>
+                        </div>
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-info text-white">Save Settings</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
